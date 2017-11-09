@@ -1,8 +1,8 @@
 import overpy
-from node import *
+from .node import *
 from geopy.distance import vincenty
 
-HEIGHT = unicode('height')
+HEIGHT = 'height'
 
 
 def get_distance(node1, node2):
@@ -43,15 +43,9 @@ def parse(filename):
     with open(filename, 'r') as f:
         data = f.read()
     result = api.parse_xml(data)
-    print "Nodes: {}".format(len(result.nodes))
-    print "Ways: {}".format(len(result.ways))
+    print("Nodes: {}".format(len(result.nodes)))
+    print("Ways: {}".format(len(result.ways)))
 
     nodeStorage = parse_nodes(result)
     parse_ways(result, nodeStorage)
     return nodeStorage
-
-
-if __name__ == '__main__':
-    nodeStorage = parse("/Users/avaneesh/amherst")
-    print get_distance(nodeStorage.get_node(61791353), nodeStorage.get_node(61791357))
-    print nodeStorage.get_node(61791353)
