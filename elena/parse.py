@@ -1,8 +1,8 @@
 import overpy
-from node import *
+from .node import *
 from geopy.distance import vincenty
 
-HEIGHT = unicode('height')
+HEIGHT = 'height'
 
 
 def get_distance(node1, node2):
@@ -28,14 +28,21 @@ def parse_ways(result, nodeStorage):
     ways_list = result.get_ways()
     for parsed_way in ways_list:
         nodes = parsed_way._node_ids  ##REFERRING TO A PRIVATE VARIABLE!!!
-        for i in range(0, len(nodes) - 1):
-            if not nodeStorage.contains(nodes[i]) or not nodeStorage.contains(nodes[i + 1]):
+        offset = 1
+        i = 0
+        # skipping nodes that are referred to in the ways but not present in the node cache
+        while i + offset < len(nodes):
+            if not nodeStorage.contains(nodes[i]) or not nodeStorage.contains(nodes[i + offset]):
+                print("{} and {}".format(nodes[i], nodes[i+offset]))
+                offset += 1
                 continue
             node1 = nodeStorage.get_node(nodes[i])
-            node2 = nodeStorage.get_node(nodes[i + 1])
+            node2 = nodeStorage.get_node(nodes[i + offset])
             dist = get_distance(node1, node2)
             node1.add_node(node2.id, dist)
             node2.add_node(node1.id, dist)
+            i = i + offset
+            offset = 1
 
 
 def parse(filename):
@@ -43,15 +50,9 @@ def parse(filename):
     with open(filename, 'r') as f:
         data = f.read()
     result = api.parse_xml(data)
-    print "Nodes: {}".format(len(result.nodes))
-    print "Ways: {}".format(len(result.ways))
+    print("Nodes: {}".format(len(result.nodes)))
+    print("Ways: {}".format(len(result.ways)))
 
     nodeStorage = parse_nodes(result)
     parse_ways(result, nodeStorage)
     return nodeStorage
-
-
-if __name__ == '__main__':
-    nodeStorage = parse("/Users/avaneesh/amherst")
-    print get_distance(nodeStorage.get_node(61791353), nodeStorage.get_node(61791357))
-    print nodeStorage.get_node(61791353)
