@@ -1,5 +1,5 @@
 import overpy
-from node import *
+from .node import *
 from geopy.distance import vincenty
 
 HEIGHT = 'height'
