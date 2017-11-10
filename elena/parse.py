@@ -33,7 +33,7 @@ def parse_ways(result, nodeStorage):
         # skipping nodes that are referred to in the ways but not present in the node cache
         while i + offset < len(nodes):
             if not nodeStorage.contains(nodes[i]) or not nodeStorage.contains(nodes[i + offset]):
-                print("{} and {}".format(nodes[i], nodes[i+offset]))
+                print("{} and {}".format(nodes[i], nodes[i + offset]))
                 offset += 1
                 continue
             node1 = nodeStorage.get_node(nodes[i])

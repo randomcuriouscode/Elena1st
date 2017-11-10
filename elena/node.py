@@ -42,3 +42,6 @@ class NodeStorage:
 
     def contains(self, id):
         return id in self.nodeMap
+
+    def get_neighbors(self, id):
+        return self.nodeMap[id].nodes
