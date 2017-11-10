@@ -1,6 +1,6 @@
 import unittest
-from elena.yen_paths import *
-from elena.parse import *
+
+from elena.algo.yen_paths import *
 
 
 class TestPaths(unittest.TestCase):
