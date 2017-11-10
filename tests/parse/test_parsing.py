@@ -1,5 +1,6 @@
 import unittest
-from elena.parse import *
+
+from elena.parse.parser import *
 
 
 class TestParsing(unittest.TestCase):

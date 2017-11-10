@@ -1,6 +1,7 @@
 import overpy
-from .node import *
 from geopy.distance import vincenty
+
+from elena.model.node import *
 
 HEIGHT = 'height'
 
