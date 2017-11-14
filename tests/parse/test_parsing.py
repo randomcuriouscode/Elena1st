@@ -6,7 +6,7 @@ from elena.parse.parser import *
 class TestParsing(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.nodeStorage = parse("/Users/avaneesh/amherst")
+        cls.nodeStorage = parse("file_path")
 
     def test_parseCheck(self):
         self.assertEqual(len(self.nodeStorage.nodeMap), 45071)

@@ -16,9 +16,9 @@ def parse_nodes(result):
     node_list = result.get_nodes()
     nodeStorage = NodeStorage()
     for parsed_node in node_list:
-        if HEIGHT in parsed_node.attributes:
+        if HEIGHT in parsed_node.tags:
             nodeStorage.add_node(parsed_node.id,
-                                 Node(parsed_node.id, parsed_node.lat, parsed_node.lon, parsed_node.attributes[HEIGHT]))
+                                 Node(parsed_node.id, parsed_node.lat, parsed_node.lon, parsed_node.tags[HEIGHT]))
         else:
             nodeStorage.add_node(parsed_node.id, Node(parsed_node.id, parsed_node.lat, parsed_node.lon, 0))
 
