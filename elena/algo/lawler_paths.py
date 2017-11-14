@@ -12,6 +12,7 @@ def get_shortest_paths(nodeStorage, id1, id2, dist):
 
     A = [(shortest_path, shortest_cost)]
     B = []
+    spur_index = 0
 
     print("Shortest path = {}".format(shortest_path))
     print("Shortest path cost = {}".format(shortest_cost))
@@ -19,7 +20,7 @@ def get_shortest_paths(nodeStorage, id1, id2, dist):
     while True:
         k = len(A)
         cur_path = A[k - 1][0]
-        for i in range(0, len(cur_path) - 1):
+        for i in range(spur_index, len(cur_path) - 1):
             spur_node = cur_path[i]
             root_path = cur_path[:i + 1]
             root_cost = calculate_cost(nodeStorage, root_path)
@@ -43,7 +44,7 @@ def get_shortest_paths(nodeStorage, id1, id2, dist):
             total_path_cost = spur_cost + root_cost
 
             if (total_path, total_path_cost) not in B:
-                B.append((total_path, total_path_cost))
+                B.append((total_path, total_path_cost, i))
 
         if len(B) == 0:
             break
@@ -53,6 +54,7 @@ def get_shortest_paths(nodeStorage, id1, id2, dist):
             break
 
         new_path_cost = B.pop()
-        A.append(new_path_cost)
+        A.append(new_path_cost[:2])
+        spur_index = new_path_cost[2]
 
     return A

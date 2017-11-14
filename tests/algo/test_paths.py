@@ -1,6 +1,10 @@
 import unittest
 
-from elena.algo.yen_paths import *
+from elena.algo import yen_paths
+from elena.algo import lawler_paths
+from elena.parse.parser import parse
+from elena.util.util import calculate_cost
+from elena.algo.shortest_path import *
 
 
 class TestPaths(unittest.TestCase):
@@ -18,8 +22,13 @@ class TestPaths(unittest.TestCase):
         self.assertEqual([61791707, 61793182, 66604339], path)
 
     def test_yen(self):
-        A = get_shortest_paths(self.nodeStorage, 66677654, 61791707, 200)
+        A = yen_paths.get_shortest_paths(self.nodeStorage, 66677654, 61791707, 290)
         print(A)
+
+    def test_yen_lawler(self):
+        A = yen_paths.get_shortest_paths(self.nodeStorage, 66677654, 61791707, 290)
+        B = yen_paths.get_shortest_paths(self.nodeStorage, 66677654, 61791707, 290)
+        self.assertEqual(A, B)
 
 
 if __name__ == '__main__':
