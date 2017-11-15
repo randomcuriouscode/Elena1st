@@ -22,12 +22,12 @@ class TestPaths(unittest.TestCase):
         self.assertEqual([61791707, 61793182, 66604339], path)
 
     def test_yen(self):
-        A = yen_paths.get_shortest_paths(self.nodeStorage, 66677654, 61791707, 290)
+        A = yen_paths.get_shortest_paths(self.nodeStorage, 66677654, 61791707, 20)
         print(A)
 
     def test_yen_lawler(self):
-        A = yen_paths.get_shortest_paths(self.nodeStorage, 66677654, 61791707, 290)
-        B = yen_paths.get_shortest_paths(self.nodeStorage, 66677654, 61791707, 290)
+        A = yen_paths.get_shortest_paths(self.nodeStorage, 66677654, 61791707, 20)
+        B = yen_paths.get_shortest_paths(self.nodeStorage, 66677654, 61791707, 20)
         self.assertEqual(A, B)
 
 
