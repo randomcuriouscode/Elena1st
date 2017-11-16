@@ -23,3 +23,77 @@
   <link href="css/elena.css" rel="stylesheet">
 
 </head>
+
+<body>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>    
+  </div>
+  <a class="navbar-brand" href="#">Logo</a>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-left active">
+        <li><a href="#">Navigate</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+</nav> 
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="form-horizontal">
+         <div class="control-group">
+          <div class="controls input-group">
+              <input type="text" id="from" placeholder="From" class="textbox input-sm" style="margin-right:50px">
+              <input type="text" id="to" placeholder="To" class="textbox input-sm">
+          </div>
+      </div>
+      <label for="rangeslider" class="control-label"><p class="text-info">Range Threshold (Percent of shortest path)<i class="icon-star"></i></p></label>
+      <div id="rangeslider" class="range range-primary">
+            <input type="range" name="range" min="100" max="10000" value="100" onchange="rangePrimary.value=value">
+            <output id="rangePrimary">100</output>
+          </div>
+    </div>
+    </div>
+    <div class="col-lg-4">
+    <div class='control-group'>
+            <div class="radio">
+              <label class=""><input type="radio" name="optradio"><span class="label" style="background-color:#58B957">Minimize Elevation</span></label>
+            </div>
+            <div class="radio">
+              <label class="active"><input type="radio" name="optradio" checked=""><span class="label" style="background-color:#55BFE0">Maximize Elevation</span></label>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-10"><center>map rendering region<br />
+    map rendering region<br />map rendering region<br />map rendering region<br />map rendering region<br />map rendering region<br />map rendering region<br />map rendering region<br />map rendering region<br />map rendering region<br />map rendering region<br />map rendering region<br /></center>
+      <div class="btn-toolbar">
+      <button type="button" class="btn btn-primary" style="background-color:#3D8BCD">Navigate</button>
+      <button type="button" class="btn btn-primary" style="background-color:#D4C96A">Save Route as Text</button>
+      <button type="button" class="btn btn-primary" style="background-color:#DB524C">Reset</button>
+    </div>
+    </div>
+    <div class="col-lg-2">Route Details panel</div>
+  </div>
+</div>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Include all compiled plugins (below),
+
+  or include individual files as needed -->
+
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
