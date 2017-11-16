@@ -1,15 +1,9 @@
 import overpy
-from geopy.distance import vincenty
 
 from elena.model.node import *
+from elena.util.util import get_distance
 
 HEIGHT = 'height'
-
-
-def get_distance(node1, node2):
-    coord1 = (node1.lat, node1.lng)
-    coord2 = (node2.lat, node2.lng)
-    return vincenty(coord1, coord2).meters
 
 
 def parse_nodes(result):

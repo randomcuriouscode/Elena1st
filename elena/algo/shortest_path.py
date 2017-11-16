@@ -1,9 +1,9 @@
 from heapq import heappush, heappop
-from geopy.distance import vincenty
+from elena.util.util import get_distance
 
 
 def heuristic(node1, node2):
-    return vincenty((node1.lat, node1.lng), (node2.lat, node2.lng)).meters
+    return get_distance(node1, node2)
 
 
 # A-star implementation
