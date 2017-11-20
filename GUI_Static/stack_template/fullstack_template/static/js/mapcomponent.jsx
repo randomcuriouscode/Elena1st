@@ -7,8 +7,8 @@ export default class MapPiece extends Component {
   this.state = {
     animate: false,
     latlng: {
-      lat: 51.505,
-      lng: -0.09,
+      lat: 42.389620,
+      lng: -72.528230,
     },
   }
 

@@ -3,6 +3,8 @@ import Hello from "./Hello";
 import { PageHeader } from "react-bootstrap";
 import MapPiece from "./mapcomponent";
 import Leaflet from 'leaflet';
+import NavBar from './navbar';
+import LatLongForm from './latlongboxes';
 
 require('../css/fullstack.css');
 var $ = require('jquery');
@@ -10,27 +12,44 @@ var $ = require('jquery');
 Leaflet.Icon.Default.imagePath =
   '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/'
 
-
+var $ = require('jquery');
 
 export default class App extends Component {
   constructor(props){
     super(props)
     this.state = {
       editfrom: true,
+      flex: 10,
       fromlatlng: {
-        lat: 51.505,
-        lng: -0.09,
+        lat: 42.389620,
+        lng: -72.528230,
       },
       tolatlng: {
-        lat: 51.505,
-        lng: -0.09,
+        lat: 42.389620,
+        lng: -72.528230,
       },
       centerlatlng: {
-        lat: 51.505,
-        lng: -0.09,
+        lat: 42.389620,
+        lng: -72.528230,
       },
     }
 
+  this.sendToServer = coords => {
+    console.log(coords.fromlat+', '+coords.fromlng);
+    console.log(coords.tolat+', '+coords.tolng);
+    var tosend = coords;
+    tosend["flex"] = this.state.flex
+    $.ajax({
+      type: 'POST',
+      url: window.location.href + 'route',
+      data: tosend,
+      dataType: 'json',
+      success: (data) => {
+        console.log(data);
+      }
+    });
+
+  }
 
   this.handleMapClick = e => {
     if(this.state.editfrom){
@@ -46,18 +65,15 @@ export default class App extends Component {
       })
     }
   }
-
+  this
 }
+
 
   render(){
       return(
         <div>
-        <h2>Proof of concept for map rendering:</h2>
-        <p>Will update with more functionality and styling.</p>
-        <p>from latitude: {this.state.fromlatlng.lat}</p>
-        <p>from longitude: {this.state.fromlatlng.lng}</p>
-        <p>to latitude: {this.state.tolatlng.lat}</p>
-        <p>to longitude: {this.state.tolatlng.lng}</p>
+          <NavBar />
+        <LatLongForm submitCoordinates={this.sendToServer.bind(this)} initfrom={this.state.fromlatlng} initto={this.state.tolatlng} />
         <MapPiece mapClick={this.handleMapClick.bind(this)} fromMarker={this.state.fromlatlng} toMarker={this.state.tolatlng}/>
       </div>
     )
