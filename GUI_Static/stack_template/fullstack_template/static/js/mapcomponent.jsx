@@ -14,37 +14,15 @@ export default class MapPiece extends Component {
 
 
   this.handleClick = e => {
-    this.setState({
-      latlng: e.latlng,
-    })
+    this.props.mapClick(e)
   }
 
-  this.toggleAnimate = () => {
-    this.setState({
-      animate: !this.state.animate,
-    })
-  }
+
 }
 
   render() {
-    const marker = this.state.hasLocation ? (
-      <Marker position={this.state.latlng}>
-        <Popup>
-          <span>You are here</span>
-        </Popup>
-      </Marker>
-    ) : null
-
     return (
       <div style={{ textAlign: 'center' }}>
-        <label>
-          <input
-            checked={this.state.animate}
-            onChange={this.toggleAnimate}
-            type="checkbox"
-          />
-          Animate panning
-        </label>
         <Map
           animate={this.state.animate}
           center={this.state.latlng}
@@ -55,7 +33,21 @@ export default class MapPiece extends Component {
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {marker}
+          <Marker
+            draggable={false}
+            position={[this.props.fromMarker.lat,this.props.fromMarker.lng]}
+            ref="from here">
+            <Popup minWidth={90}>
+            </Popup>
+          </Marker>
+          <Marker
+            draggable={false}
+            position={[this.props.toMarker.lat,this.props.toMarker.lng]}
+            ref="to here">
+            <Popup minWidth={90}>
+            </Popup>
+          </Marker>
+
         </Map>
       </div>
     )

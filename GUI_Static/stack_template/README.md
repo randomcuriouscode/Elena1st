@@ -4,7 +4,7 @@ for CS520:
 
 follow the "Installing and Running" section
 
- 
+
 points of interest:
 fullstack_template/static/index.html provides the basic html page
 fullstack_template/static/js has all of the js files for the react components
@@ -12,10 +12,11 @@ fullstack_template/server/server.py provides the routes for the server
 
 (note: this was a git repo in itself, but has been adapted to be used as a basic template for the tech stack setup)
 
+in order to run, I think you need to "npm install react-leaflet" in addition to "npm install" after pulling from repo. Not sure why, but I'll fix it.
 
 # Creating a Full Stack Web Application with Python, NPM, Webpack and React
 
-This project shows you how to build a basic web application using popular web technologies 
+This project shows you how to build a basic web application using popular web technologies
 like NPM, Webpack, React and Python.
 
 
@@ -47,12 +48,10 @@ any data between each other yet.
 
 ### A Simple Website
 If you go to the [SIMPLE_WEBSITE](https://github.com/angineering/FullStackTemplate/tree/SIMPLE_WEBSITE) tag,
-you get a simple website with a button requesting info from python and displaying the result. 
+you get a simple website with a button requesting info from python and displaying the result.
 It has a nice design, as a background image and CSS support has been added.
 
 When you click the button, 'Hello' will be displayed in a random European language.
 
 This is what it looks like:
 ![Simple Website](simple_website.png?raw=true "A Simmple Website")
-
-
