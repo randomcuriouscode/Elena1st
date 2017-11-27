@@ -20,7 +20,7 @@ def route():
     tolng = float(arraydata[8])
     flex = float(arraydata[10])
     # this will print out a summary of the values:
-    # print("fromlat: "+str(fromlat)+"\nfromlng: "+str(fromlng)+"\ntolat: "+str(tolat)+"\ntolng: "+str(tolng)+"\nflexibility: "+str(flex))
+    print("fromlat: "+str(fromlat)+"\nfromlng: "+str(fromlng)+"\ntolat: "+str(tolat)+"\ntolng: "+str(tolng)+"\nflexibility: "+str(flex))
     return callback()
 
 
