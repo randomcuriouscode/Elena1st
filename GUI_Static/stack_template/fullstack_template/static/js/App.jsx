@@ -40,7 +40,7 @@ export default class App extends Component {
     var tosend = coords;
     tosend["flex"] = coords.pctflex
     $.ajax({
-      type: 'POST',
+      type: 'GET',
       url: window.location.href + 'route',
       data: tosend,
       dataType: 'json',
@@ -72,7 +72,6 @@ export default class App extends Component {
   render(){
       return(
         <div>
-          <NavBar />
         <LatLongForm submitCoordinates={this.sendToServer.bind(this)} initfrom={this.state.fromlatlng} initto={this.state.tolatlng} initflex={this.state.flex}/>
         <MapPiece mapClick={this.handleMapClick.bind(this)} fromMarker={this.state.fromlatlng} toMarker={this.state.tolatlng}/>
       </div>
