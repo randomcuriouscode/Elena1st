@@ -2,6 +2,7 @@ import overpy
 
 from elena.model.node import *
 from elena.util.util import get_distance
+import pickle
 
 HEIGHT = 'height'
 
@@ -41,6 +42,10 @@ def parse_ways(result, nodeStorage):
 
 
 def parse(filename):
+    if "pickle" in filename:
+        with open(filename, 'rb') as f:
+            nodeStorage = pickle.load(f)
+        return nodeStorage
     api = overpy.Overpass()
     with open(filename, 'r') as f:
         data = f.read()
@@ -50,4 +55,6 @@ def parse(filename):
 
     nodeStorage = parse_nodes(result)
     parse_ways(result, nodeStorage)
+    with open('nodeStorage.pickle', 'wb') as f:
+        pickle.dump(nodeStorage, f)
     return nodeStorage

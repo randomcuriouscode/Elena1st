@@ -38,6 +38,7 @@ export default class MapPiece extends Component {
             position={[this.props.fromMarker.lat,this.props.fromMarker.lng]}
             ref="from here">
             <Popup minWidth={90}>
+              <span>From this point</span>
             </Popup>
           </Marker>
           <Marker
@@ -45,6 +46,7 @@ export default class MapPiece extends Component {
             position={[this.props.toMarker.lat,this.props.toMarker.lng]}
             ref="to here">
             <Popup minWidth={90}>
+              <span>To this point</span>
             </Popup>
           </Marker>
 

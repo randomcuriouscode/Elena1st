@@ -6,14 +6,14 @@ import MapComponent from "./mapcomponent";
 const MOUNT_NODE = document.getElementById('app')
 
 const render = () => {
-  const App = require('./App').default
-  ReactDOM.render(<App />, MOUNT_NODE)
+  const Navigator = require('./Navigator').default
+  ReactDOM.render(<Navigator />, MOUNT_NODE)
 }
 
 render()
 
 if (module.hot) {
-  module.hot.accept(['./components/app'], () =>
+  module.hot.accept(['./components/navigator'], () =>
     setImmediate(() => {
       ReactDOM.unmountComponentAtNode(MOUNT_NODE)
       render()

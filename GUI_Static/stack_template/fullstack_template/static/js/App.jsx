@@ -19,7 +19,7 @@ export default class App extends Component {
     super(props)
     this.state = {
       editfrom: true,
-      flex: 10,
+      flex: 25,
       fromlatlng: {
         lat: 42.389620,
         lng: -72.528230,
@@ -38,9 +38,9 @@ export default class App extends Component {
     console.log(coords.fromlat+', '+coords.fromlng);
     console.log(coords.tolat+', '+coords.tolng);
     var tosend = coords;
-    tosend["flex"] = this.state.flex
+    tosend["flex"] = coords.pctflex
     $.ajax({
-      type: 'POST',
+      type: 'GET',
       url: window.location.href + 'route',
       data: tosend,
       dataType: 'json',
@@ -72,8 +72,7 @@ export default class App extends Component {
   render(){
       return(
         <div>
-          <NavBar />
-        <LatLongForm submitCoordinates={this.sendToServer.bind(this)} initfrom={this.state.fromlatlng} initto={this.state.tolatlng} />
+        <LatLongForm submitCoordinates={this.sendToServer.bind(this)} initfrom={this.state.fromlatlng} initto={this.state.tolatlng} initflex={this.state.flex}/>
         <MapPiece mapClick={this.handleMapClick.bind(this)} fromMarker={this.state.fromlatlng} toMarker={this.state.tolatlng}/>
       </div>
     )
