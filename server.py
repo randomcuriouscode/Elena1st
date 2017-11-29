@@ -30,7 +30,7 @@ def route():
     prefs = request.args.get('route_pref')
     elevation = prefs.get('elevation')
     distance = prefs.get('distance')
-    pathList = get_shortest_paths(nodeStorage, fromId, toId, 0)
+    pathList = get_shortest_paths(nodeStorage, fromId, toId, distance)
     bestPath = pathList[0]
     bestElev = get_elevation(bestPath[0])
     for path in pathList:
