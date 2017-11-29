@@ -2,10 +2,12 @@ from elena.algo.shortest_path import get_a_star_path
 from elena.util.util import calculate_cost
 
 
-def get_shortest_paths(nodeStorage, id1, id2, dist):
+def get_shortest_paths(nodeStorage, id1, id2, dist_perc):
     shortest_path, shortest_cost = get_a_star_path(nodeStorage, id1, id2)
     if shortest_path is None:
         return None
+
+    dist = (shortest_cost * dist_perc) / 100
 
     if shortest_cost > dist:
         return []
