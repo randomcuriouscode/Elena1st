@@ -3,6 +3,8 @@ import elena.algo.lawler_paths
 from geopy.distance import vincenty
 
 app = Flask(__name__, static_folder='../static/dist', template_folder='../static')
+nodeStorage = parse("nodeStorage.pickle")
+
 
 @app.route('/')
 def index():
@@ -19,15 +21,16 @@ def route():
     # print(request.get_data())
     # arraydata = str(request.get_data()).replace('&',' ').replace('=',' ').replace('\'',' ').split(" ")
     # print(request.args)
-    nodeStorage = parse("nodeStorage.pickle")
     fromlat = request.args.get('fromlat')
     fromlng = request.args.get('fromlng')
+    fromId = getNode(fromlat, fromlong)
     tolat = request.args.get('tolat')
     tolng = request.args.get('tolng')
+    toId = getNode(tolat, tolong)
     prefs = request.args.get('route_pref')
     elevation = prefs.get('elevation')
     distance = prefs.get('distance')
-    pathList = get_shortest_paths(nodeStorage, fromnode, tonode,
+    pathList = get_shortest_paths(nodeStorage, fromId, toId, 0)
     bestPath = pathList[0]
     bestElev = get_elevation(bestPath[0])
     for path in pathList:
@@ -56,6 +59,18 @@ def get_elevation(nodeList):
                 elevSum+=difference
         previousNode = node
     return elevSum
+
+def getNode(lat, long):
+    bestNode = None
+    bestDist = None
+    coord1 = (node1.lat, node1.lng)
+    for k, v in nodeStorage.nodeList.items():
+        coord2 = (v.lat, v.lng)
+        dist = vincenty(coord1, coord2).meters
+        if bestDist == None or bestDist > dist:
+            bestNode = k
+            bestDist = dist
+    return bestNode
 
         
 def callback():
