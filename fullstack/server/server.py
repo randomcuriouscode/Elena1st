@@ -1,7 +1,7 @@
 import random
 from flask import Flask, render_template, request
 
-app = Flask(__name__, static_folder='../static/dist', template_folder='../static')
+app = Flask(__name__, static_folder='../client/dist', template_folder='../client')
 
 @app.route('/')
 def index():
