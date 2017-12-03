@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/mikekeegan/Desktop/F17/CS520/Elena1st/GUI_Static/stack_template/fullstack_template/server/firstenv"
+VIRTUAL_ENV="/Users/mikekeegan/Desktop/F17/CS520/Elena1st/fullstack/server/firstenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -18,7 +18,8 @@ export default class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      editfrom: true,
+      editfrom: false,
+      editto: false,
       flex: 25,
       fromlatlng: {
         lat: 42.389620,
@@ -33,6 +34,26 @@ export default class App extends Component {
         lng: -72.528230,
       },
     }
+
+  this.beginEditFrom = () => {
+    this.setState({
+      editfrom: true,
+      fromlatlng: {
+        lat: "selecting...",
+        lng: "selecting...",
+      }
+    })
+  }
+
+  this.beginEditTo = () => {
+    this.setState({
+      editto: true,
+      tolatlng: {
+        lat: "selecting...",
+        lng: "selecting...",
+      }
+    })
+  }
 
   this.sendToServer = coords => {
     console.log(coords.fromlat+', '+coords.fromlng);
@@ -58,9 +79,9 @@ export default class App extends Component {
         fromlatlng: e.latlng,
       })
     }
-    else{
+    else if(this.state.editto){
       this.setState({
-        editfrom: true,
+        editto: false,
         tolatlng: e.latlng,
       })
     }
@@ -72,7 +93,7 @@ export default class App extends Component {
   render(){
       return(
         <div>
-        <LatLongForm submitCoordinates={this.sendToServer.bind(this)} initfrom={this.state.fromlatlng} initto={this.state.tolatlng} initflex={this.state.flex}/>
+        <LatLongForm editTo={this.beginEditTo.bind(this)} editFrom={this.beginEditFrom.bind(this)} submitCoordinates={this.sendToServer.bind(this)} initfrom={this.state.fromlatlng} initto={this.state.tolatlng} initflex={this.state.flex}/>
         <MapPiece mapClick={this.handleMapClick.bind(this)} fromMarker={this.state.fromlatlng} toMarker={this.state.tolatlng}/>
       </div>
     )

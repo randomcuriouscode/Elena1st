@@ -1,4 +1,4 @@
-#!/Users/mikekeegan/Desktop/F17/CS520/Elena1st/GUI_Static/stack_template/fullstack_template/server/firstenv/bin/python
+#!/Users/mikekeegan/Desktop/F17/CS520/Elena1st/fullstack/server/firstenv/bin/python
 
 import sys
 import getopt

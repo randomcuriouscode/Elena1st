@@ -52,22 +52,24 @@ export default class LatLongForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} style={{ padding: '15px' }}>
+      <form className="range input-sm" onSubmit={this.handleSubmit} style={{ padding: '15px', width: '45%' }}>
         <label>
-          <table>
+          <table className="input-table">
             <tbody>
             <tr><th>From Latitude:</th><th>From Longitude:</th></tr>
           <tr>
           <th><input type="text" value={this.state.fromlat} onChange={this.handleFromLatChange} /></th>
           <th><input type="text" value={this.state.fromlng} onChange={this.handleFromLngChange} /></th>
+          <th><button type="button" onClick={this.props.editFrom}><span className="glyphicon glyphicon-home"></span> Select From</button></th>
           </tr>
           <tr><th>To Latitude:</th><th>To Longitude:</th></tr>
           <tr>
             <th><input type="text" value={this.state.tolat} onChange={this.handleToLatChange} /></th>
             <th><input type="text" value={this.state.tolng} onChange={this.handleToLngChange} /></th>
+            <th><button type="button" onClick={this.props.editTo}><span className="glyphicon glyphicon-home"></span> Select To</button></th>
           </tr>
           <tr >
-            <th colSpan="2">
+            <th colSpan="3">
             <br />
             <input type="range" name="points" min="0" max="100" defaultValue={this.state.pctflex} onChange={this.handleFlexChange} /> {this.state.pctflex}% Distance Flexibility Allowed
             </th>
