@@ -8,7 +8,7 @@ export default class LatLongForm extends Component {
       fromlng: this.props.initfrom.lng,
       tolat: this.props.initto.lat,
       tolng: this.props.initto.lng,
-      pctflex: this.props.initflex
+      pctflex: 0
     };
 
     this.handleFromLatChange = this.handleFromLatChange.bind(this);
@@ -24,9 +24,13 @@ export default class LatLongForm extends Component {
       fromlat: nextProps.initfrom.lat,
       fromlng: nextProps.initfrom.lng,
       tolat: nextProps.initto.lat,
-      tolng: nextProps.initto.lng,
-      pctflex: nextProps.initflex
+      tolng: nextProps.initto.lng
     })
+    if(this.state.pctflex == 0){
+      this.setState({
+        pctflex: nextProps.initflex
+      })
+    }
   }
 
   handleFromLatChange(event) {
@@ -68,7 +72,7 @@ export default class LatLongForm extends Component {
             <th><input type="text" value={this.state.tolng} onChange={this.handleToLngChange} /></th>
             <th><button type="button" onClick={this.props.editTo}><span className="glyphicon glyphicon-home"></span> Select To</button></th>
           </tr>
-          <tr >
+          <tr>
             <th colSpan="3">
             <br />
             <input type="range" name="points" min="0" max="100" defaultValue={this.state.pctflex} onChange={this.handleFlexChange} /> {this.state.pctflex}% Distance Flexibility Allowed
