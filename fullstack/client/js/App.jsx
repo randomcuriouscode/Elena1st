@@ -64,7 +64,7 @@ export default class App extends Component {
       type: 'GET',
       url: window.location.href + 'route',
       data: tosend,
-      dataType: 'json',
+      dataType: 'text',
       success: (data) => {
         console.log(data);
       }

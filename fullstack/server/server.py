@@ -1,7 +1,13 @@
-import random
+import flask
+import elena.algo.lawler_paths
+from elena.parse.parser import parse
+from geopy.distance import vincenty
 from flask import Flask, render_template, request
 
-app = Flask(__name__, static_folder='../client/dist', template_folder='../client')
+
+app = Flask(__name__, static_folder='../static/dist', template_folder='../static')
+nodeStorage = parse("nodeStorage.pickle")
+
 
 @app.route('/')
 def index():
@@ -20,12 +26,54 @@ def route():
     # print(request.args)
     fromlat = request.args.get('fromlat')
     fromlng = request.args.get('fromlng')
+    fromId = getNode(fromlat, fromlong)
     tolat = request.args.get('tolat')
     tolng = request.args.get('tolng')
-    flex = request.args.get('pctflex')
-    # this will print out a summary of the values:
-    print("fromlat: "+str(fromlat)+"\nfromlng: "+str(fromlng)+"\ntolat: "+str(tolat)+"\ntolng: "+str(tolng)+"\nflexibility: "+str(flex))
-    return 'callback()'
+    toId = getNode(tolat, tolong)
+    prefs = request.args.get('route_pref')
+    elevation = prefs.get('elevation')
+    distance = prefs.get('distance')
+    pathList = get_shortest_paths(nodeStorage, fromId, toId, distance)
+    bestPath = pathList[0]
+    bestElev = get_elevation(bestPath[0])
+    for path in pathList:
+        elv = get_elevation(path[0])
+        if elv == bestElev:
+            if bestPath[1] < path[1]:
+                bestElev = elv
+                bestPath = path
+        elif elevation == 1:
+            if elv < bestElev:
+                bestElev = elv
+                bestPath = path
+        elif elevation == 2:
+            if elv > bestElev:
+                bestElev = elv
+                bestPath = path
+    return jsonify(List=bestPath[0], distance=bestPath[1], elev=bestElev)
+
+def get_elevation(nodeList):
+    elevSum = 0
+    previousNode = None
+    for node in nodeList:
+        if previousNode != None:
+            difference = node.height-previousNode.height
+            if difference > 0:
+                elevSum+=difference
+        previousNode = node
+    return elevSum
+
+def getNode(lat, long):
+    bestNode = None
+    bestDist = None
+    coord1 = (node1.lat, node1.lng)
+    for k, v in nodeStorage.nodeList.items():
+        coord2 = (v.lat, v.lng)
+        dist = vincenty(coord1, coord2).meters
+        if bestDist == None or bestDist > dist:
+            bestNode = k
+            bestDist = dist
+    return bestNode
 
 
 def callback():
