@@ -27,9 +27,8 @@ def route():
     tolat = request.args.get('tolat')
     tolng = request.args.get('tolng')
     toId = getNode(tolat, tolong)
-    prefs = request.args.get('route_pref')
-    elevation = prefs.get('elevation')
-    distance = prefs.get('distance')
+    elevation = 1 # TODO CHANGE THIS TO PARAM
+    distance = request.args.get('distance')
     pathList = get_shortest_paths(nodeStorage, fromId, toId, distance)
     bestPath = pathList[0]
     bestElev = get_elevation(bestPath[0])

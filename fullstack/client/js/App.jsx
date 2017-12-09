@@ -58,12 +58,10 @@ export default class App extends Component {
   this.sendToServer = coords => {
     console.log(coords.fromlat+', '+coords.fromlng);
     console.log(coords.tolat+', '+coords.tolng);
-    var tosend = coords;
-    tosend["flex"] = coords.pctflex
     $.ajax({
       type: 'GET',
       url: window.location.href + 'route',
-      data: tosend,
+      data: coords,
       dataType: 'json',
       success: (data) => {
         console.log(data);
