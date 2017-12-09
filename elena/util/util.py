@@ -7,6 +7,12 @@ def get_distance(node1, node2):
     return vincenty(coord1, coord2).meters
 
 
+def get_distance_coordinates(lat1, lng1, lat2, lng2):
+    coord1 = (lat1, lng1)
+    coord2 = (lat2, lng2)
+    return vincenty(coord1, coord2).meters
+
+
 def calculate_cost(nodeStorage, path):
     sum = 0
     for i in range(0, len(path) - 1):

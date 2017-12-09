@@ -45,3 +45,6 @@ class NodeStorage:
 
     def get_neighbors(self, id):
         return self.nodeMap[id].nodes
+
+    def set_map(self, nodeMap):
+        self.nodeMap = nodeMap

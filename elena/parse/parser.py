@@ -5,6 +5,7 @@ from elena.util.util import get_distance
 import pickle
 
 HEIGHT = 'height'
+HIGHWAY = 'highway'
 
 
 def parse_nodes(result):
@@ -23,6 +24,9 @@ def parse_nodes(result):
 def parse_ways(result, nodeStorage):
     ways_list = result.get_ways()
     for parsed_way in ways_list:
+        if HIGHWAY not in parsed_way.tags:
+            continue
+        count += 1
         nodes = parsed_way._node_ids  ##REFERRING TO A PRIVATE VARIABLE!!!
         offset = 1
         i = 0
@@ -41,6 +45,16 @@ def parse_ways(result, nodeStorage):
             offset = 1
 
 
+def prune_nodes(nodeStorage):
+    new_map = {}
+
+    for id, node in nodeStorage.nodeMap.items():
+        if nodeStorage.get_node(id).nodes:
+            new_map[id] = node
+
+    nodeStorage.set_map(new_map)
+
+
 def parse(filename):
     if "pickle" in filename:
         with open(filename, 'rb') as f:
@@ -55,6 +69,7 @@ def parse(filename):
 
     nodeStorage = parse_nodes(result)
     parse_ways(result, nodeStorage)
+    prune_nodes(nodeStorage)
     with open('nodeStorage.pickle', 'wb') as f:
         pickle.dump(nodeStorage, f)
     return nodeStorage
