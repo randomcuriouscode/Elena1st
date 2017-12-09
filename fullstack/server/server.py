@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask, render_template, request, jsonify
 from elena.algo.lawler_paths import *
 from elena.parse.parser import parse
@@ -7,17 +6,6 @@ from geopy.distance import vincenty
 
 app = Flask(__name__, static_folder='../client/dist', template_folder='../client')
 nodeStorage = parse("map.osm")
-=======
-import flask
-import elena.algo.lawler_paths
-from elena.parse.parser import parse
-from geopy.distance import vincenty
-from flask import Flask, render_template, request
-
-
-app = Flask(__name__, static_folder='../static/dist', template_folder='../static')
-nodeStorage = parse("nodeStorage.pickle")
->>>>>>> f9dc88c588eded99e44f2b209d50d92969de050a
 
 
 @app.route('/')

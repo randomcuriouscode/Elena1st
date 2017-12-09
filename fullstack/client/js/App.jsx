@@ -61,7 +61,7 @@ export default class App extends Component {
     $.ajax({
       type: 'GET',
       url: window.location.href + 'route',
-      data: tosend,
+      data: coords,
       dataType: 'text',
       success: (data) => {
         console.log(data);
