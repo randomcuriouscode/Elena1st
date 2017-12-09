@@ -26,7 +26,6 @@ def parse_ways(result, nodeStorage):
     for parsed_way in ways_list:
         if HIGHWAY not in parsed_way.tags:
             continue
-        count += 1
         nodes = parsed_way._node_ids  ##REFERRING TO A PRIVATE VARIABLE!!!
         offset = 1
         i = 0
