@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import Flask, render_template, request, jsonify
 from elena.algo.lawler_paths import *
 from elena.parse.parser import parse
@@ -6,6 +7,17 @@ from geopy.distance import vincenty
 
 app = Flask(__name__, static_folder='../client/dist', template_folder='../client')
 nodeStorage = parse("map.osm")
+=======
+import flask
+import elena.algo.lawler_paths
+from elena.parse.parser import parse
+from geopy.distance import vincenty
+from flask import Flask, render_template, request
+
+
+app = Flask(__name__, static_folder='../static/dist', template_folder='../static')
+nodeStorage = parse("nodeStorage.pickle")
+>>>>>>> f9dc88c588eded99e44f2b209d50d92969de050a
 
 
 @app.route('/')
@@ -29,9 +41,9 @@ def route():
     tolat = request.args.get('tolat')
     tolng = request.args.get('tolng')
     toId = getNode(tolat, tolng)
-    prefs = request.args.get('route_pref')
     elevation = 1 # TODO CHANGE THIS TO PARAM
     distance = request.args.get('distance')
+
     pathList = get_shortest_paths(nodeStorage, fromId, toId, distance)
     bestPath = pathList[0]
     bestElev = get_elevation(bestPath[0])
@@ -60,8 +72,20 @@ def get_elevation(nodeList):
             difference = node.height-previousNode.height
             if difference > 0:
                 elevSum+=difference
-        previousNode = nodeStorage.get_node(node)
+        previousNode = node
     return elevSum
+
+def getNode(lat, long):
+    bestNode = None
+    bestDist = None
+    coord1 = (node1.lat, node1.lng)
+    for k, v in nodeStorage.nodeList.items():
+        coord2 = (v.lat, v.lng)
+        dist = vincenty(coord1, coord2).meters
+        if bestDist == None or bestDist > dist:
+            bestNode = k
+            bestDist = dist
+    return bestNode
 
 def getNode(lat, long):
     bestNode = None

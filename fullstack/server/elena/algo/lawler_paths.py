@@ -3,7 +3,6 @@ from elena.util.util import calculate_cost
 
 
 def get_shortest_paths(nodeStorage, id1, id2, dist_perc):
-    #print(nodeStorage)
     dist_perc = float(dist_perc)
     shortest_path, shortest_cost = get_a_star_path(nodeStorage, id1, id2)
     if shortest_path is None:
