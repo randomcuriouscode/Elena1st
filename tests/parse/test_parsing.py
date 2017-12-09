@@ -9,7 +9,7 @@ class TestParsing(unittest.TestCase):
         cls.nodeStorage = parse("/Users/avaneesh/amherst")
 
     def test_parseCheck(self):
-        self.assertEqual(len(self.nodeStorage.nodeMap), 11187)
+        self.assertEqual(len(self.nodeStorage.nodeMap), 10684)
 
 
 if __name__ == '__main__':
