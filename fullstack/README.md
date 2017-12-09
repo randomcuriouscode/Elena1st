@@ -5,7 +5,7 @@
 2. Run the following commands:
 	
 	`source firstenv/bin/activate`
-    
+    `pip install -r requirements.txt`
 	`python server.py`
     
 ### Client: 
