@@ -8,7 +8,8 @@ export default class LatLongForm extends Component {
       fromlng: this.props.initfrom.lng,
       tolat: this.props.initto.lat,
       tolng: this.props.initto.lng,
-      distance: 0
+      distance: 100,
+      elevation: 1,
     };
 
     this.handleFromLatChange = this.handleFromLatChange.bind(this);
@@ -16,6 +17,7 @@ export default class LatLongForm extends Component {
     this.handleToLatChange = this.handleToLatChange.bind(this);
     this.handleToLngChange = this.handleToLngChange.bind(this);
     this.handleFlexChange = this.handleFlexChange.bind(this);
+    this.handleElevChange = this.handleElevChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -24,9 +26,10 @@ export default class LatLongForm extends Component {
       fromlat: nextProps.initfrom.lat,
       fromlng: nextProps.initfrom.lng,
       tolat: nextProps.initto.lat,
-      tolng: nextProps.initto.lng
+      tolng: nextProps.initto.lng,
+      elevation: nextProps.initelev,
     })
-    if(this.state.distance == 0){
+    if(this.state.distance < 100){
       this.setState({
         distance: nextProps.initflex
       })
@@ -47,6 +50,9 @@ export default class LatLongForm extends Component {
   }
   handleFlexChange(event){
     this.setState({distance: event.target.value});
+  }
+  handleElevChange(event){
+    this.setState({elevation: event.target.value});
   }
 
   handleSubmit(event) {
@@ -75,7 +81,14 @@ export default class LatLongForm extends Component {
           <tr>
             <th colSpan="3">
             <br />
-            <input type="range" name="points" min="0" max="100" defaultValue={this.state.distance} onChange={this.handleFlexChange} /> {this.state.distance}% Distance Flexibility Allowed
+            <input type="range" name="points" min="100" max="1000" defaultValue={this.state.distance} onChange={this.handleFlexChange} /> {this.state.distance}% Distance Flexibility Allowed
+            </th>
+          </tr>
+          <tr>
+            <th colSpan="3">
+            <br />
+              <input type="radio" name="minmax" onClick={this.handleElevChange} value="1" /> Minimize elevation<br />
+              <input type="radio" name="minmax" onClick={this.handleElevChange} value="2" /> Maximize elevation<br />
             </th>
           </tr>
           </tbody>

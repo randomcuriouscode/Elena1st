@@ -20,7 +20,8 @@ export default class App extends Component {
     this.state = {
       editfrom: false,
       editto: false,
-      flex: 25,
+      flex: 100,
+      elev: 1,
       fromlatlng: {
         lat: 42.389620,
         lng: -72.528230,
@@ -33,6 +34,7 @@ export default class App extends Component {
         lat: 42.389620,
         lng: -72.528230,
       },
+      response: {},
     }
 
   this.beginEditFrom = () => {
@@ -56,15 +58,17 @@ export default class App extends Component {
   }
 
   this.sendToServer = coords => {
-    console.log(coords.fromlat+', '+coords.fromlng);
-    console.log(coords.tolat+', '+coords.tolng);
+    //console.log(coords.fromlat+', '+coords.fromlng);
+    //console.log(coords.tolat+', '+coords.tolng);
     $.ajax({
       type: 'GET',
       url: window.location.href + 'route',
       data: coords,
-      dataType: 'text',
+      dataType: 'json',
       success: (data) => {
-        console.log(data);
+        this.setState({
+          response: data
+        })
       }
     });
 
@@ -91,7 +95,7 @@ export default class App extends Component {
   render(){
       return(
         <div>
-        <LatLongForm editTo={this.beginEditTo.bind(this)} editFrom={this.beginEditFrom.bind(this)} submitCoordinates={this.sendToServer.bind(this)} initfrom={this.state.fromlatlng} initto={this.state.tolatlng} initflex={this.state.flex}/>
+        <LatLongForm editTo={this.beginEditTo.bind(this)} editFrom={this.beginEditFrom.bind(this)} submitCoordinates={this.sendToServer.bind(this)} initfrom={this.state.fromlatlng} initto={this.state.tolatlng} initflex={this.state.flex} initelev={this.state.elev}/>
         <MapPiece mapClick={this.handleMapClick.bind(this)} fromMarker={this.state.fromlatlng} toMarker={this.state.tolatlng}/>
       </div>
     )
