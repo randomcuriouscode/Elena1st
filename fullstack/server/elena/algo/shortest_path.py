@@ -1,5 +1,5 @@
 from heapq import heappush, heappop
-from fullstack.server.elena.util.util import get_distance
+from elena.util.util import get_distance
 
 
 def heuristic(node1, node2):

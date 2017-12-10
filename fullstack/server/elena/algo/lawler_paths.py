@@ -1,5 +1,5 @@
-from fullstack.server.elena.algo.shortest_path import get_a_star_path
-from fullstack.server.elena.util.util import calculate_cost
+from elena.algo.shortest_path import get_a_star_path
+from elena.util.util import calculate_cost
 
 
 def get_shortest_paths(nodeStorage, id1, id2, dist_perc):

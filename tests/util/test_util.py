@@ -1,7 +1,7 @@
 import unittest
 
-from fullstack.server.elena.parse.parser import parse
-from fullstack.server.elena.util.util import get_distance
+from elena.parse.parser import parse
+from elena.util.util import get_distance
 
 
 class TestUtil(unittest.TestCase):

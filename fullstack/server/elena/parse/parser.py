@@ -1,9 +1,9 @@
 import overpy
 
-from fullstack.server.elena.model.node import *
-from fullstack.server.elena.parse.pruner import prune_nodes
-from fullstack.server.elena.parse.pruner import remove_disconnected
-from fullstack.server.elena.util.util import get_distance
+from elena.model.node import *
+from elena.parse.pruner import prune_nodes
+from elena.parse.pruner import remove_disconnected
+from elena.util.util import get_distance
 import pickle
 
 HEIGHT = 'height'
