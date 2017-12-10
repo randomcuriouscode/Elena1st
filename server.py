@@ -1,5 +1,5 @@
 import flask
-import elena.algo.lawler_paths
+import fullstack.server.elena.algo.lawler_paths
 from geopy.distance import vincenty
 
 app = Flask(__name__, static_folder='../static/dist', template_folder='../static')

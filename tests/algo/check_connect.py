@@ -1,5 +1,5 @@
 from collections import defaultdict
-from elena.parse.parser import *
+from fullstack.server.elena.parse.parser import *
 
 
 def breadth_first(nodeStorage, node, node_bool):

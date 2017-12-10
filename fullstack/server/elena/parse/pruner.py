@@ -1,5 +1,5 @@
 from collections import defaultdict
-from elena.parse.parser import *
+
 
 def prune_nodes(nodeStorage):
     new_map = {}
