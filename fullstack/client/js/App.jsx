@@ -93,10 +93,18 @@ export default class App extends Component {
 
 
   render(){
-      return(
+    var route = null;
+    var pathDist = null;
+    var pathElev = null;
+    if(this.state.response != {}){
+      route = this.state.response.List;
+      pathDist = this.state.response.distance;
+      pathElev = this.state.response.elev;
+    }
+    return(
         <div>
         <LatLongForm editTo={this.beginEditTo.bind(this)} editFrom={this.beginEditFrom.bind(this)} submitCoordinates={this.sendToServer.bind(this)} initfrom={this.state.fromlatlng} initto={this.state.tolatlng} initflex={this.state.flex} initelev={this.state.elev}/>
-        <MapPiece mapClick={this.handleMapClick.bind(this)} fromMarker={this.state.fromlatlng} toMarker={this.state.tolatlng}/>
+        <MapPiece mapClick={this.handleMapClick.bind(this)} fromMarker={this.state.fromlatlng} toMarker={this.state.tolatlng} bestRoute={route} />
       </div>
     )
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
+import { Map, TileLayer, Marker, Popup, Polyline } from 'react-leaflet'
 
 export default class MapPiece extends Component {
   constructor(props){
@@ -15,6 +15,15 @@ export default class MapPiece extends Component {
 
   this.handleClick = e => {
     this.props.mapClick(e)
+  }
+
+  this.renderRoute = () => {
+    if(typeof this.props.bestRoute != 'undefined'){
+      return(<Polyline color="purple" positions={this.props.bestRoute} />);
+    }
+    else{
+      return;
+    }
   }
 
 
@@ -80,6 +89,7 @@ export default class MapPiece extends Component {
           />
         {marker1}
         {marker2}
+        {this.renderRoute()}
 
         </Map>
       </div>
