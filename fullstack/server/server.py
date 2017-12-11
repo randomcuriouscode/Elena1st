@@ -5,7 +5,7 @@ from elena.util.util import get_distance_coordinates
 
 
 app = Flask(__name__, static_folder='../client/dist', template_folder='../client')
-nodeStorage = parse("map.osm")
+nodeStorage = parse("srtm_prod.osm")
 
 
 @app.route('/')
@@ -48,11 +48,11 @@ def route():
         elif elevation == 2:
             if elv > bestElev:
                 bestElev = elv
-                bestPath = path\
+                bestPath = path
     bestPathCoords = []
     for node in bestPath[0]:
         node = nodeStorage.get_node(node)
-        bestPathCoords.append(node.lat, node.lng)
+        bestPathCoords.append((float(node.lat), float(node.lng)))
     return jsonify(List=bestPathCoords, distance=bestPath[1], elev=bestElev)
 
 
@@ -62,7 +62,7 @@ def get_elevation(nodeList):
     for node in nodeList:
         node = nodeStorage.get_node(node)
         if previousNode is not None:
-            difference = node.height-previousNode.height
+            difference = float(node.height)-float(previousNode.height)
             if difference > 0:
                 elevSum += difference
         previousNode = node

@@ -70,13 +70,13 @@ export default class LatLongForm extends Component {
           <tr>
           <th><input type="text" value={this.state.fromlat} onChange={this.handleFromLatChange} /></th>
           <th><input type="text" value={this.state.fromlng} onChange={this.handleFromLngChange} /></th>
-          <th><button type="button" onClick={this.props.editFrom}><span className="glyphicon glyphicon-home"></span> Select From</button></th>
+          <th><button type="button" onClick={this.props.editFrom}><span className="glyphicon glyphicon-map-marker"></span> Select From</button></th>
           </tr>
           <tr><th>To Latitude:</th><th>To Longitude:</th></tr>
           <tr>
             <th><input type="text" value={this.state.tolat} onChange={this.handleToLatChange} /></th>
             <th><input type="text" value={this.state.tolng} onChange={this.handleToLngChange} /></th>
-            <th><button type="button" onClick={this.props.editTo}><span className="glyphicon glyphicon-home"></span> Select To</button></th>
+            <th><button type="button" onClick={this.props.editTo}><span className="glyphicon glyphicon-map-marker"></span> Select To</button></th>
           </tr>
           <tr>
             <th colSpan="3">
