@@ -48,8 +48,12 @@ def route():
         elif elevation == 2:
             if elv > bestElev:
                 bestElev = elv
-                bestPath = path
-    return jsonify(List=bestPath[0], distance=bestPath[1], elev=bestElev)
+                bestPath = path\
+    bestPathCoords = []
+    for node in bestPath[0]:
+        node = nodeStorage.get_node(node)
+        bestPathCoords.append(node.lat, node.lng)
+    return jsonify(List=bestPathCoords, distance=bestPath[1], elev=bestElev)
 
 
 def get_elevation(nodeList):
