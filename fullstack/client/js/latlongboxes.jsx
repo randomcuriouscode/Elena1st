@@ -67,9 +67,9 @@ export default class LatLongForm extends Component {
       return(
         <div>
           <u>Route Details:</u><br />
-          Distance: {this.props.routeDist}
+          Distance: {this.props.routeDist} m
           <br />
-          Elevation Gain: {this.props.routeElev}
+          Elevation Gain: {this.props.routeElev} m
         </div>
       );
     }
@@ -106,7 +106,7 @@ export default class LatLongForm extends Component {
                   value={this.state.distance}
                   slideStop={this.handleFlexChange}
                   step={5}
-                  max={1000}
+                  max={300}
                   min={100}
                    /> &nbsp;&nbsp;&nbsp;&nbsp;{this.state.distance}% Flexibility allowed
 
