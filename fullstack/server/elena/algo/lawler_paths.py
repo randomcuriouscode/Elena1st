@@ -60,4 +60,7 @@ def get_shortest_paths(nodeStorage, id1, id2, dist_perc):
         A.append(new_path_cost[:2])
         spur_index = new_path_cost[2]
 
+        if len(A) > 50:
+            break
+
     return A
