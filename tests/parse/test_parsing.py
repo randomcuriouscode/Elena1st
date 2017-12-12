@@ -1,6 +1,6 @@
 import unittest
 
-from elena.parse.parser import *
+from fullstack.server.elena.parse.parser import *
 
 
 class TestParsing(unittest.TestCase):

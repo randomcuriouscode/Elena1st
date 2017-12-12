@@ -1,10 +1,10 @@
 import unittest
 
-from elena.algo import yen_paths
-from elena.algo import lawler_paths
-from elena.parse.parser import parse
-from elena.util.util import calculate_cost
-from elena.algo.shortest_path import *
+from fullstack.server.elena.algo import yen_paths
+from fullstack.server.elena.algo import lawler_paths
+from fullstack.server.elena.parse.parser import parse
+from fullstack.server.elena.util.util import calculate_cost
+from fullstack.server.elena.algo.shortest_path import *
 
 
 class TestPaths(unittest.TestCase):

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
-from elena.algo.lawler_paths import *
-from elena.parse.parser import parse
-from elena.util.util import get_distance_coordinates
+from fullstack.server.elena.algo.lawler_paths import *
+from fullstack.server.elena.parse.parser import parse
+from fullstack.server.elena.util.util import get_distance_coordinates
 
 
 app = Flask(__name__, static_folder='../client/dist', template_folder='../client')
