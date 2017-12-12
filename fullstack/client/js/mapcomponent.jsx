@@ -92,6 +92,8 @@ export default class MapPiece extends Component {
         {this.renderRoute()}
 
         </Map>
+        <br />
+        <br />
       </div>
     )
   }

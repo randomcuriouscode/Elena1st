@@ -5,6 +5,7 @@ import MapPiece from "./mapcomponent";
 import Leaflet from 'leaflet';
 import NavBar from './navbar';
 import LatLongForm from './latlongboxes';
+import BootstrapSlider from 'react-bootstrap-slider/src/css/bootstrap-slider.min.css';
 
 require('../css/fullstack.css');
 var $ = require('jquery');
@@ -103,8 +104,10 @@ export default class App extends Component {
     }
     return(
         <div>
-        <LatLongForm editTo={this.beginEditTo.bind(this)} editFrom={this.beginEditFrom.bind(this)} submitCoordinates={this.sendToServer.bind(this)} initfrom={this.state.fromlatlng} initto={this.state.tolatlng} initflex={this.state.flex} initelev={this.state.elev}/>
+        <LatLongForm routeDist={pathDist} routeElev={pathElev} editTo={this.beginEditTo.bind(this)} editFrom={this.beginEditFrom.bind(this)} submitCoordinates={this.sendToServer.bind(this)} initfrom={this.state.fromlatlng} initto={this.state.tolatlng} initflex={this.state.flex} initelev={this.state.elev}/>
+        <br />
         <MapPiece mapClick={this.handleMapClick.bind(this)} fromMarker={this.state.fromlatlng} toMarker={this.state.tolatlng} bestRoute={route} />
+        <br />
       </div>
     )
   }
