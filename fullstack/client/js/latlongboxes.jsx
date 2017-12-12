@@ -80,8 +80,8 @@ export default class LatLongForm extends Component {
 
   render() {
     return (
-      <div class="row">
-          <div class="col-md-6 col-md-offset-3">
+      <div className="row">
+          <div className="col-md-6 col-md-offset-3">
       <form className="range input-sm" onSubmit={this.handleSubmit} style={{ padding: '15px'}}>
         <label>
           <table className="input-table">
