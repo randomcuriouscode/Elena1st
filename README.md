@@ -1,21 +1,38 @@
-# Running the Web App
+# EleNa #1: Elevation Based Navigation
+
+REQUIRED: Python3
 
 ### Server:
-1. cd into Elena1st/fullstack/server
-2. Run the following commands:
-	
-	`source firstenv/bin/activate`
-    `pip install -r requirements.txt`
-	`python server.py`
+Setup a virtualenv for the required python modules.
+
+If you are using Python 3
+```
+virtualenv myenv
+```
+otherwise
+```
+virtualenv -p <path-to-python-3> myenv 
+```
+Then activate and install the requirements as follows.
+```
+source myenv/bin/activate
+pip install -r requirements.txt
+```
+Run the server.
+```
+python -m fullstack
+```
+
     
 ### Client: 
-1. cd into Elena1st/fullstack/client
-2. Run the following commands:
-
-	`npm install`
-    
-    `npm run watch`
+Change your working directory.
+```
+cd fullstack/client
+```
+Then run the following commands to setup and run the client.
+```
+npm install
+npm run watch
+```
     
 Navigate to http://localhost:5000/ and the demo should be up!
-
-In order to add functionality to the server, check Elena1st/fullstack/server/server.py for the route which currently prints out the values received from the client. Clicking the submit button in the client will trigger this function, so you can take that information and use it to calculate routes and things.

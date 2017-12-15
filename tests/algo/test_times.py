@@ -1,9 +1,9 @@
 import unittest
 import timeit
-from elena.parse.parser import parse
+from fullstack.server.elena.parse.parser import parse
 import random
 
-nodeStorage = parse("/Users/avaneesh/amherst")
+nodeStorage = parse("srtm_prod.osm")
 key_list = list(nodeStorage.nodeMap.keys())
 node1 = random.choice(key_list)
 node2 = random.choice(key_list)
@@ -11,8 +11,8 @@ node2 = random.choice(key_list)
 
 class TestTimes(unittest.TestCase):
     setup = '''
-from elena.algo import yen_paths
-from elena.algo import lawler_paths
+from fullstack.server.elena.algo import yen_paths
+from fullstack.server.elena.algo import lawler_paths
 from tests.algo.test_times import nodeStorage, node1, node2
 
 print(node1)

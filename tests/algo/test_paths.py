@@ -1,16 +1,16 @@
 import unittest
 
-from elena.algo import yen_paths
-from elena.algo import lawler_paths
-from elena.parse.parser import parse
-from elena.util.util import calculate_cost
-from elena.algo.shortest_path import *
+from fullstack.server.elena.algo import yen_paths
+from fullstack.server.elena.algo import lawler_paths
+from fullstack.server.elena.parse.parser import parse
+from fullstack.server.elena.util.util import calculate_cost
+from fullstack.server.elena.algo.shortest_path import *
 
 
 class TestPaths(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.nodeStorage = parse("/Users/avaneesh/amherst")
+        cls.nodeStorage = parse("srtm_prod.osm")
 
     def test_calculate_cost(self):
         path = [66677654, 66754238, 66711385, 66732536, 66718935, 66769489, 66701422, 66710693, 66709586, 66727122,
