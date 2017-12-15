@@ -14,8 +14,17 @@ otherwise
 virtualenv -p <path-to-python-3> myenv 
 ```
 Then activate and install the requirements as follows.
+
+(on MacOS:)
 ```
 source myenv/bin/activate
+```
+(on Windows:)
+```
+source myenv\Scripts\activate
+```
+then
+```
 pip install -r requirements.txt
 ```
 Run the server.
