@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "jest": "^21.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-bootstrap-slider": "^2.1.3",
