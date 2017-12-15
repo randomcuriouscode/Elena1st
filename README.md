@@ -5,6 +5,10 @@ REQUIRED: Python3
 ### Server:
 Setup a virtualenv for the required python modules.
 
+Install virtualenv
+```
+pip install virtualenv
+```
 If you are using Python 3
 ```
 virtualenv myenv
