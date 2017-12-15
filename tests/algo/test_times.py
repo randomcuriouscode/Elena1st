@@ -3,7 +3,7 @@ import timeit
 from fullstack.server.elena.parse.parser import parse
 import random
 
-nodeStorage = parse("/Users/avaneesh/amherst")
+nodeStorage = parse("srtm_prod.osm")
 key_list = list(nodeStorage.nodeMap.keys())
 node1 = random.choice(key_list)
 node2 = random.choice(key_list)
