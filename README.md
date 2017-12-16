@@ -4,6 +4,7 @@ REQUIRED: Python3
 
 ### Server:
 Setup a virtualenv for the required python modules.
+All commands should be run in the project base directory.
 
 If you are using Python 3
 ```
@@ -30,6 +31,24 @@ pip install -r requirements.txt
 Run the server.
 ```
 python -m fullstack
+```
+
+Running tests:
+```
+cd <project-base-dir>
+python -m unittest discover -s tests/ -p 'test_*.py'
+```
+
+EleNa can also be installed as a python package for use as a library to drive other servers. 
+```
+cd fullstack/server
+python setup.py install
+```
+This installs the "elena" package, which can then be imported as follows:
+```
+from elena.algo.lawler_paths import *
+from elena.parse.parser import parse
+from elena.util.util import get_distance_coordinates
 ```
 
     
