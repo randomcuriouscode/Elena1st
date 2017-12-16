@@ -33,12 +33,6 @@ Run the server.
 python -m fullstack
 ```
 
-Running tests:
-```
-cd <project-base-dir>
-python -m unittest discover -s tests/ -p 'test_*.py'
-```
-
 EleNa can also be installed as a python package for use as a library to drive other servers. 
 ```
 cd fullstack/server
@@ -64,3 +58,18 @@ npm run watch
 ```
     
 Navigate to http://localhost:5000/ and the demo should be up!
+
+
+### Running tests:
+
+For backend:
+```
+cd <project-base-dir>
+python -m unittest discover tests
+```
+
+For frontend:
+```
+cd fullstack/client
+npm run test
+```

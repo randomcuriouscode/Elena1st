@@ -1,4 +1,4 @@
-# Documentation:
+# Documentation
 
 The purpose of this project is to provide a web application that allows a user to incorporate elevation into the routes they search for.
 
@@ -31,8 +31,13 @@ Sample Usage 2:
 7. The user clicks the "Calculate Route" button.
 8. The map renders a purple route corresponding to the correct navigation directions. The webpage will also display the distance and elevation gain of the route to the user.
 
-Tests for the front end can be executed by running the following command in the fullstack/client directory:
+The route is found as follows:
+1. The inputs are passed to the server as query params in a GET request.
+2. The server sends the From and To coordinates, and the distance flexibility value to the Pathfinder component.
+3. The Pathfinder returns all paths of length less than x% of the shortest path; where x is the distance flexibility value.
+4. The server then chooses the path with the greatest or least elevation gain (as per the input) and returns that path to the client.
 
-`npm run test`
+The algorithm used to find the candidate paths is a modified implementation of the Lawler improvement to [Yen's algorithm](https://en.wikipedia.org/wiki/Yen%27s_algorithm).
 
+The backend is implemented entirely in Python.  
 The front end is powered by React.js and styled with Bootstrap. The call to the backend is made with Ajax. The tests are written with Jest and Enzyme. Everything is bundled with webpack.
