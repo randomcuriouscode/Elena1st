@@ -33,18 +33,6 @@ Run the server.
 python -m fullstack
 ```
 
-EleNa can also be installed as a python package for use as a library to drive other servers. 
-```
-cd fullstack/server
-python setup.py install
-```
-This installs the "elena" package, which can then be imported as follows:
-```
-from elena.algo.lawler_paths import *
-from elena.parse.parser import parse
-from elena.util.util import get_distance_coordinates
-```
-
     
 ### Client: 
 Change your working directory.
